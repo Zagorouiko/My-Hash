@@ -21,4 +21,12 @@ class MyHash
     value_place = @keys.index(key)
     @values.at(value_place)
   end
+
+  define_method(:has_key?) do |key|
+    if @keys.include?(key)
+      true
+    else
+      false
+    end
+end
 end
