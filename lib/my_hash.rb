@@ -13,8 +13,14 @@ class MyHash
   end
 
   define_method(:store) do |key, value|
-    @keys.push(key)
-    @values.push(value)
+
+    if @keys.include?(key)
+      key_index = @keys.index(key)
+      @values[key_index] = value
+    else
+      @keys.push(key)
+      @values.push(value)
+    end
   end
 
   define_method(:fetch) do |key|
@@ -23,10 +29,6 @@ class MyHash
   end
 
   define_method(:has_key?) do |key|
-    if @keys.include?(key)
-      true
-    else
-      false
-    end
-end
+    @keys.include?(key)
+  end
 end

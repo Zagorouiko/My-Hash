@@ -8,6 +8,13 @@ describe(MyHash) do
       test_hash.store("kitten", "cute")
       expect(test_hash.fetch("kitten")).to(eq("cute"))
     end
+
+    it("fetches the most recently added value for a key") do
+      test_hash = MyHash.new()
+      test_hash.store("kitten", "cute")
+      test_hash.store("kitten", "ugly")
+      expect(test_hash.fetch("kitten")).to(eq("ugly"))
+    end
   end
 
   describe("#has_key?") do
